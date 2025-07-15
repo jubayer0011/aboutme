@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: bisque;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+    }
+
+    .message {
+      background-color: aqua;
+      border: 2px solid black;
+      border-radius: 25px;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .ok-button {
+      margin-top: 20px;
+      padding: 10px 25px;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      background-color: #28a745;
+      border: none;
+      border-radius: 10px;
+      text-decoration: none; /* underline off */
+      box-shadow: 2px 2px 5px gray;
+      transition: 0.3s;
+    }
+
+    .ok-button:hover {
+      background-color: #218838;
+      transform: scale(1.05);
+      box-shadow: 3px 3px 8px gray;
+    }
+  </style>
+  <title>Message</title>
+</head>
+<body>
+
+  <p class="message">
+    I am currently unavailable at Facebook. You can contact with me via WhatsApp.
+  </p>
+
+  <!-- OK লেখাটি এখন দারুণ বাটন আকারে ডেকোরেটেড -->
+  <a href="index.html" class="ok-button">OK</a>
+
+</body>
+</html>
