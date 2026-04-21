@@ -10,6 +10,7 @@
             --accent: #7000ff;
             --bg: #0a0a0c;
             --card-bg: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
         }
 
         body {
@@ -28,19 +29,21 @@
             padding: 20px;
         }
 
-        /* Hero Section */
+        /* Hero Section with Animation */
         .header {
             text-align: center;
             padding: 60px 20px;
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border);
             border-radius: 30px;
             backdrop-filter: blur(10px);
             margin-bottom: 40px;
             position: relative;
-            overflow: hidden;
+            overflow: hidden; /* অ্যানিমেশন কনটেন্টকে হেডারের ভেতর রাখতে */
+            z-index: 1; /* হেডার কন্টেন্টকে নিচে রাখার জন্য */
         }
 
+        /* rotating background animation (ব্যাবহার করা হয়েছে) */
         .header::before {
             content: '';
             position: absolute;
@@ -51,7 +54,7 @@
             background: conic-gradient(from 180deg at 50% 50%, var(--primary) 0deg, transparent 360deg);
             animation: rotate 10s linear infinite;
             opacity: 0.1;
-            z-index: -1;
+            z-index: -1; /* অ্যানিমেশনকে হেডারের টেক্সটের পেছনে রাখার জন্য */
         }
 
         @keyframes rotate {
@@ -73,23 +76,34 @@
             text-transform: uppercase;
             letter-spacing: 3px;
             color: #aaa;
+            margin-top: 10px;
+        }
+
+        /* Profile Wrapper to Control Stacking */
+        .profile-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            z-index: 10; /* প্রোফাইল ছবিকে সবার উপরে রাখার জন্য */
+            margin-top: -90px; /* হেডারের সাথে ওভারল্যাপ করার জন্য */
+            margin-bottom: 20px;
         }
 
         .profile-img {
             width: 180px;
             height: 180px;
-            border-radius: 24% 76% 70% 30% / 30% 30% 70% 70%; /* Organic shape */
-            border: 2px solid var(--primary);
+            border-radius: 30px;
+            border: 4px solid var(--bg);
             object-fit: cover;
-            margin: -90px auto 20px;
-            display: block;
-            box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
-            transition: 0.5s;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 242, 255, 0.3);
+            background: var(--bg);
+            transition: 0.5s ease;
         }
 
         .profile-img:hover {
             border-radius: 50%;
             transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.5);
         }
 
         /* Layout Grid */
@@ -103,28 +117,36 @@
             background: var(--card-bg);
             padding: 30px;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.3s;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
         }
 
         .section:hover {
+            transform: translateY(-5px);
             border-color: var(--primary);
-            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.05);
         }
 
+        /* Section Titles with modern accent dot */
         h2 {
             font-size: 1.4rem;
-            color: var(--primary);
+            color: #fff;
             margin-top: 0;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            letter-spacing: 0.5px;
         }
 
+        /* Glowing Neon Dot (// সরিয়ে এই ডট দেওয়া হয়েছে) */
         h2::before {
-            content: '//';
-            font-family: monospace;
-            opacity: 0.5;
+            content: '';
+            display: block;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary);
         }
 
         ul {
@@ -133,15 +155,16 @@
         }
 
         ul li {
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            color: #ccc;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            color: #bbb;
+            font-size: 0.95rem;
         }
 
         /* Buttons & Links */
         .btn-container {
             text-align: center;
-            margin: 20px 0;
+            margin-bottom: 20px;
         }
 
         .btn {
@@ -179,40 +202,49 @@
             text-decoration: none;
             border-radius: 10px;
             font-size: 0.85rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border);
+            transition: 0.2s;
         }
 
         .contact-info a:hover {
             background: var(--primary);
             color: #000;
+            border-color: var(--primary);
         }
 
         .more {
             grid-column: 1 / -1;
             text-align: center;
             margin-top: 20px;
+            padding: 20px 0;
         }
 
         .morereal {
             color: var(--primary);
             text-decoration: none;
             font-weight: bold;
-            border-bottom: 2px solid transparent;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.8;
             transition: 0.3s;
         }
 
-        .morereal:hover {
-            border-color: var(--primary);
-            letter-spacing: 1px;
+        .morereal:hover { 
+            opacity: 1;
+            letter-spacing: 3px;
         }
 
         a { color: var(--primary); text-decoration: none; }
 
         /* Responsive */
         @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
+            h1 { font-size: 2.2rem; }
             .container { padding: 15px; }
             .header { padding: 40px 15px; }
+            .profile-img { width: 140px; height: 140px; }
+            .profile-wrapper { margin-top: -70px; }
+            .contact-info { flex-direction: column; }
         }
     </style>
 </head>
@@ -224,7 +256,9 @@
             <p>Science Student | Future Innovator</p>
         </div>
 
-        <img src="jubayer.jpg" alt="Jubayer" class="profile-img">
+        <div class="profile-wrapper">
+            <img src="jubayer.jpg" alt="Jubayer" class="profile-img">
+        </div>
 
         <div class="btn-container">
             <a href="https://jubayer0011.github.io/photos/" target="_blank" class="btn">View Album</a>
