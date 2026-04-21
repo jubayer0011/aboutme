@@ -3,164 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jubayer Talukder</title>
+    <title>Jubayer Talukder | Portfolio</title>
     <style>
+        :root {
+            --primary: #00f2ff;
+            --accent: #7000ff;
+            --bg: #0a0a0c;
+            --card-bg: rgba(255, 255, 255, 0.05);
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #e9ebee;
-            color: #333;
+            background: radial-gradient(circle at top right, #1a1a2e, #0a0a0c);
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
+
         .container {
-            max-width: 1000px;
-            margin: auto;
-            background: white;
+            max-width: 900px;
+            margin: 40px auto;
             padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
+
+        /* Hero Section */
         .header {
             text-align: center;
-            padding: 20px;
-            background-color: #1877f2;
-            color: white;
-            border-radius: 10px;
+            padding: 60px 20px;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
         }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 180deg at 50% 50%, var(--primary) 0deg, transparent 360deg);
+            animation: rotate 10s linear infinite;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #aaa;
+        }
+
         .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 24% 76% 70% 30% / 30% 30% 70% 70%; /* Organic shape */
+            border: 2px solid var(--primary);
+            object-fit: cover;
+            margin: -90px auto 20px;
             display: block;
-            margin: 20px auto;
-            width: 150px;
-            height: 150px;
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
+            transition: 0.5s;
+        }
+
+        .profile-img:hover {
             border-radius: 50%;
-            border: 3px solid white;
+            transform: scale(1.05);
         }
+
+        /* Layout Grid */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
         .section {
-            margin: 20px 0;
-            padding: 10px;
-            background: #dfe3ee;
-            border-radius: 5px;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
         }
+
+        .section:hover {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
         h2 {
-            color: #1877f2;
-            text-align: center;
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+
+        h2::before {
+            content: '//';
+            font-family: monospace;
+            opacity: 0.5;
+        }
+
         ul {
             list-style: none;
             padding: 0;
         }
+
         ul li {
-            padding: 5px 0;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #ccc;
         }
-        .contact-info a {
-            display: inline-block;
-            padding: 10px 15px;
-            margin: 5px;
-            text-decoration: none;
-            color: white;
-            background-color: #1877f2;
-            border-radius: 5px;
+
+        /* Buttons & Links */
+        .btn-container {
+            text-align: center;
+            margin: 20px 0;
         }
-        .contact-info a:hover {
-            background-color: #0d6db7;
-        }
+
         .btn {
             display: inline-block;
-            padding: 10px 15px;
-            background-color: #1877f2;
-            color: white;
+            padding: 12px 35px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: #000;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 50px;
             font-weight: bold;
-            margin-top: 10px;
-            text-align: center;
-            width: 100%;
-            max-width: 200px; /* Set max-width for button */
-            margin-left: auto;
-            margin-right: auto;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
-        .btn:hover {
-            background-color: #0d6db7;
-        }
-        .more{
-          
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .morereal{
-             display: inline-block;
-            padding: 10px 15px;
-            margin: 5px;
-            text-decoration: none;
-            color: white;
-            background-color: #1877f2;
-            border-radius: 5px;
 
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px var(--primary);
         }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .contact-info a {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-info a:hover {
+            background: var(--primary);
+            color: #000;
+        }
+
+        .more {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .morereal {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s;
+        }
+
         .morereal:hover {
-            background-color: black;
+            border-color: var(--primary);
+            letter-spacing: 1px;
         }
-        
+
+        a { color: var(--primary); text-decoration: none; }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .container { padding: 15px; }
+            .header { padding: 40px 15px; }
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
         <div class="header">
             <h1>Jubayer Talukder</h1>
             <p>Science Student | Future Innovator</p>
         </div>
+
         <img src="jubayer.jpg" alt="Jubayer" class="profile-img">
-        
-        <!-- View Album Button Under Profile Image -->
-        <div>
-            <a href="https://jubayer0011.github.io/photos/" target="_blank" class="btn">View album</a>
+
+        <div class="btn-container">
+            <a href="https://jubayer0011.github.io/photos/" target="_blank" class="btn">View Album</a>
         </div>
 
-        <div class="section">
-            <h2>About Me</h2>
-            <p>I am Jubayer Talukder, an intermediate student specializing in science, with a strong interest in subjects like physics and mathematics. At this stage, I am fully dedicated to my studies, aiming to build a solid foundation for my future career.</p>
-        </div>
-        
-        <div class="section">
-            <h2>Education</h2>
-            <p>Currently studying at <a href="https://jpbgc.edu.bd/" target="_blank"> KALIAKAIR Govt. college</a></p>
-            <ul>
-                <li>Completed SSC in Science, 2024</li>
-            </ul>
-        </div>
-        
-        <div class="section">
-            <h2>Contact</h2>
-            <p class="contact-info">
-                <a href="https://wa.me/8801576470915" target="_blank">WhatsApp</a>
-                <a href="mailto:jubayer0959@gmail.com">Email Me</a>
-                <a href="error.html" target="_blank">Facebook</a>
-            </p>
-            <p>📍 Konabari, Gazipur, Bangladesh</p>
-        </div>
-        
-        <div class="section">
-            <h2>Languages</h2>
-            <ul>
-                <li>Bangla</li>
-                <li>English</li>
-                <li>Hindi</li>
-            </ul>
-        </div>
-        
-        <div class="section">
-            <h2>Hobbies</h2>
-            <ul>
-                <li>Reading</li>
-                <li>Coding</li>
-                <li>Travelling</li>
-            </ul>
-        </div>
-        <div class="more">
-            <a href="more.html" class="morereal">
-                More about me
-            </a>
+        <div class="grid-layout">
+            <div class="section">
+                <h2>About Me</h2>
+                <p>I am Jubayer Talukder, an intermediate student specializing in science, with a strong interest in physics and mathematics. Currently, I am building a solid foundation for my future career through dedicated study.</p>
+            </div>
+
+            <div class="section">
+                <h2>Education</h2>
+                <p>Currently studying at <a href="https://jpbgc.edu.bd/" target="_blank">KALIAKAIR Govt. College</a></p>
+                <ul>
+                    <li>Completed SSC in Science, 2024</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Languages</h2>
+                <ul>
+                    <li>Bengali (Native)</li>
+                    <li>English</li>
+                    <li>Hindi</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Hobbies</h2>
+                <ul>
+                    <li>Coding & Tech</li>
+                    <li>Reading & Writing Poems</li>
+                    <li>Traveling</li>
+                    <li>Writing Books</li>
+                </ul>
+            </div>
+
+            <div class="section" style="grid-column: 1 / -1;">
+                <h2>Contact & Location</h2>
+                <p>📍 Konabari, Gazipur, Bangladesh</p>
+                <div class="contact-info">
+                    <a href="https://wa.me/8801576470915" target="_blank">WhatsApp</a>
+                    <a href="mailto:jubayer0959@gmail.com">Email Me</a>
+                    <a href="https://www.facebook.com/people/Jubayer-Talukdar/pfbid0F5t76Db1SVbVWYt3mAcm6UtxJoL8Z8nBtMCv1LRUum6XTcgXF846W2uMYNNVvf4cl/" target="_blank">Facebook</a>
+                </div>
+            </div>
+
+            <div class="more">
+                <a href="more.html" class="morereal">EXPLORE MORE ABOUT ME →</a>
+            </div>
         </div>
     </div>
+
 </body>
 </html>
