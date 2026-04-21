@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Writings | Jubayer</title>
+    <style>
+        :root {
+            --bg: #050507;
+            --surface: #121217;
+            --primary: #ffaa00; /* Electric Amber */
+            --secondary: #9d4edd; /* Deep Purple */
+            --text: #e0e0e0;
+            --border: rgba(255, 170, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', 'AdorshoLipi', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Background Animation */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% -20%, #240046, transparent);
+            z-index: -1;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            color: #888;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .books-grid {
+            max-width: 1100px;
+            margin: 0 auto 100px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        /* 3D Book Card Design */
+        .book-card {
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .book-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(255, 170, 0, 0.1);
+        }
+
+        .book-cover-wrapper {
+            width: 180px;
+            height: 260px;
+            perspective: 1000px;
+            margin-bottom: 20px;
+        }
+
+        .book-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px 15px 15px 5px;
+            box-shadow: 10px 10px 20px rgba(0,0,0,0.5);
+            transition: transform 0.5s;
+            transform-style: preserve-3d;
+        }
+
+        .book-card:hover .book-cover {
+            transform: rotateY(-25deg);
+        }
+
+        /* Neon Title with Dot */
+        .book-title {
+            font-size: 1.4rem;
+            color: #fff;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .book-title::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .book-meta {
+            font-size: 0.85rem;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* "Read Now" Animation */
+        .read-badge {
+            margin-top: 20px;
+            padding: 8px 20px;
+            border: 1px solid var(--primary);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--primary);
+            transition: 0.3s;
+            opacity: 0.6;
+        }
+
+        .book-card:hover .read-badge {
+            background: var(--primary);
+            color: #000;
+            opacity: 1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            border-top: 1px solid var(--border);
+            color: #444;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.2rem; }
+            .books-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <header>
+        <p>A Collection of Thoughts</p>
+        <h1>আমার লেখনী</h1>
+    </header>
+
+    <div class="books-grid">
+        
+        <a href="read.html?book=1" class="book-card">
+            <div class="book-cover-wrapper">
+                <img src="book-cover1.jpg" alt="Book Cover" class="book-cover">
+            </div>
+            <div class="book-title">অপেক্ষা</div>
+            <div class="book-meta">উপন্যাস • ২০২৫</div>
+            <div class="read-badge">READ NOW</div>
+        </a>
+
+       
+
+    
+    </div>
+
+    <footer>
+        &copy; 2026 Jubayer Talukder | Built for the future.
+    </footer>
+
+</body>
+</html>
