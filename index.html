@@ -6,21 +6,24 @@
     <title>Jubayer Talukder | Portfolio</title>
     <style>
         :root {
-            --primary: #00f2ff;
-            --accent: #7000ff;
-            --bg: #0a0a0c;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --border: rgba(255, 255, 255, 0.1);
+            --primary: #2563eb; /* Modern Blue */
+            --accent: #7c3aed; /* Purple */
+            --bg: #f8fafc; /* Light Grayish White */
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
         }
 
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: radial-gradient(circle at top right, #1a1a2e, #0a0a0c);
-            color: #e0e0e0;
+            background: rgb(171, 218, 186);
+            color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
+            background: gray;
         }
 
         .container {
@@ -29,21 +32,21 @@
             padding: 20px;
         }
 
-        /* Hero Section with Animation */
+        /* Hero Section */
         .header {
             text-align: center;
             padding: 60px 20px;
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 30px;
-            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             margin-bottom: 40px;
             position: relative;
-            overflow: hidden; /* অ্যানিমেশন কনটেন্টকে হেডারের ভেতর রাখতে */
-            z-index: 1; /* হেডার কন্টেন্টকে নিচে রাখার জন্য */
+            overflow: hidden;
+            z-index: 1;
+            background-color: black;
         }
 
-        /* rotating background animation (ব্যাবহার করা হয়েছে) */
         .header::before {
             content: '';
             position: absolute;
@@ -52,9 +55,9 @@
             width: 200%;
             height: 200%;
             background: conic-gradient(from 180deg at 50% 50%, var(--primary) 0deg, transparent 360deg);
-            animation: rotate 10s linear infinite;
-            opacity: 0.1;
-            z-index: -1; /* অ্যানিমেশনকে হেডারের টেক্সটের পেছনে রাখার জন্য */
+            animation: rotate 12s linear infinite;
+            opacity: 0.05; /* হালকা অ্যানিমেশন */
+            z-index: -1;
         }
 
         @keyframes rotate {
@@ -75,17 +78,18 @@
             font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            color: #aaa;
+            color: var(--text-muted);
             margin-top: 10px;
+            font-weight: 500;
         }
 
-        /* Profile Wrapper to Control Stacking */
+        /* Profile Section */
         .profile-wrapper {
             position: relative;
             display: flex;
             justify-content: center;
-            z-index: 10; /* প্রোফাইল ছবিকে সবার উপরে রাখার জন্য */
-            margin-top: -90px; /* হেডারের সাথে ওভারল্যাপ করার জন্য */
+            z-index: 10;
+            margin-top: -90px;
             margin-bottom: 20px;
         }
 
@@ -93,20 +97,20 @@
             width: 180px;
             height: 180px;
             border-radius: 30px;
-            border: 4px solid var(--bg);
+            border: 6px solid var(--card-bg);
             object-fit: cover;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 242, 255, 0.3);
-            background: var(--bg);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            background: #eee;
             transition: 0.5s ease;
         }
 
         .profile-img:hover {
             border-radius: 50%;
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(0, 242, 255, 0.5);
+            transform: scale(1.03);
+            box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.2);
         }
 
-        /* Layout Grid */
+        /* Grid Layout */
         .grid-layout {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -119,26 +123,24 @@
             border-radius: 20px;
             border: 1px solid var(--border);
             transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
 
         .section:hover {
             transform: translateY(-5px);
             border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
         }
 
-        /* Section Titles with modern accent dot */
         h2 {
             font-size: 1.4rem;
-            color: #fff;
+            color: var(--text-main);
             margin-top: 0;
             display: flex;
             align-items: center;
             gap: 12px;
-            letter-spacing: 0.5px;
         }
 
-        /* Glowing Neon Dot (// সরিয়ে এই ডট দেওয়া হয়েছে) */
         h2::before {
             content: '';
             display: block;
@@ -146,7 +148,6 @@
             height: 8px;
             background: var(--primary);
             border-radius: 50%;
-            box-shadow: 0 0 10px var(--primary);
         }
 
         ul {
@@ -156,12 +157,12 @@
 
         ul li {
             padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            color: #bbb;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-muted);
             font-size: 0.95rem;
         }
 
-        /* Buttons & Links */
+        /* Buttons */
         .btn-container {
             text-align: center;
             margin-bottom: 20px;
@@ -170,20 +171,21 @@
         .btn {
             display: inline-block;
             padding: 12px 35px;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            color: #000;
+            background: var(--primary);
+            color: #fff;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: 0.3s;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39);
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 20px var(--primary);
+            transform: translateY(-2px);
+            background: #1d4ed8;
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.23);
         }
 
         .contact-info {
@@ -196,19 +198,20 @@
         .contact-info a {
             flex: 1;
             text-align: center;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
+            padding: 12px;
+            background: #f1f5f9;
+            color: var(--text-main);
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 0.85rem;
+            font-weight: 500;
             border: 1px solid var(--border);
             transition: 0.2s;
         }
 
         .contact-info a:hover {
             background: var(--primary);
-            color: #000;
+            color: #fff;
             border-color: var(--primary);
         }
 
@@ -216,28 +219,26 @@
             grid-column: 1 / -1;
             text-align: center;
             margin-top: 20px;
-            padding: 20px 0;
+            background-color: black;
         }
 
         .morereal {
             color: var(--primary);
             text-decoration: none;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.8;
+            letter-spacing: 1px;
             transition: 0.3s;
         }
 
         .morereal:hover { 
-            opacity: 1;
-            letter-spacing: 3px;
+            color: var(--accent);
+            letter-spacing: 2px;
         }
 
-        a { color: var(--primary); text-decoration: none; }
+        a { color: var(--primary); text-decoration: none; font-weight: 500; }
 
-        /* Responsive */
         @media (max-width: 600px) {
             h1 { font-size: 2.2rem; }
             .container { padding: 15px; }
@@ -293,7 +294,7 @@
                     <li>Coding & Tech</li>
                     <li>Reading books</li>
                     <li>Traveling</li>
-                    <li>Writing novels and poems <a href="writings/writings.html" target="_blank">👉CLICK HERE TO READ MY BOOKS</a></li>
+                    <li>Writing novels and poems <a href="writings/writings.html" target="_blank">👉 CLICK HERE</a></li>
                 </ul>
             </div>
 
