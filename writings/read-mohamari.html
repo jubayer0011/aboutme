@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আকাশ ভরা তারা | পড়া শুরু করুন</title>
+    <style>
+        :root {
+            --paper: #f4ece4; 
+            --ink: #2c2420;
+            --accent: #b0413e;
+            --border: rgba(176, 65, 62, 0.2);
+        }
+
+        body {
+            font-family: 'Times New Roman', 'AdorshoLipi', serif;
+            background-color: #dfd3c3; 
+            color: var(--ink);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .reader-container {
+            max-width: 800px;
+            width: 100%;
+            background-color: var(--paper);
+            min-height: 100vh;
+            padding: 60px 80px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .book-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .book-title {
+            font-size: 3rem;
+            margin: 0;
+            color: var(--accent);
+        }
+
+        /* Reading Area */
+        #novel-content {
+            font-size: 1.3rem;
+            line-height: 2.2;
+            text-align: justify;
+            white-space: pre-wrap; /* টেক্সটের ফরম্যাট ঠিক রাখবে */
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0; left: 0; height: 5px;
+            background: var(--accent);
+            width: 0%;
+            z-index: 1000;
+            transition: width 0.2s ease;
+        }
+
+        footer {
+            margin-top: 100px;
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid var(--border);
+            color: #888;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .reader-container { padding: 40px 20px; }
+            .book-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <div class="reader-container">
+        <div class="top-nav">
+            <a href="writings.html" class="back-link">← লাইব্রেরি</a>
+            <span id="reading-status" style="color: #999; font-size: 0.9rem;">পড়ছেন...</span>
+        </div>
+
+        <div class="book-header">
+            <h1 class="book-title">কবিতার মহামারি</h1>
+            <p style="color: #777;">জুবায়ের তালুকদার</p>
+        </div>
+
+        <div id="novel-content"></div>
+
+        <footer>
+            সমাপ্ত। পড়ার জন্য ধন্যবাদ।
+        </footer>
+    </div>
+
+    <script>
+        // স্ক্রল প্রগ্রেস লজিক
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+            
+            if(scrolled > 95) {
+                document.getElementById("reading-status").innerText = "শেষের পথে";
+            } else {
+                document.getElementById("reading-status").innerText = "পড়ছেন...";
+            }
+        };
+
+        // উপন্যাস লোড করার ফাংশন
+        function displayNovel() {
+            document.getElementById('novel-content').innerText = novelData;
+        }
+
+        // পেজ লোড হলে ফাংশনটি রান করবে
+        window.onload = displayNovel;
+
+        // --- উপন্যাসটি নিচে দেওয়া হলো ---
+        // ব্যাকটিক (`) চিহ্নের ভেতরে তোমার পুরো উপন্যাসটি পেস্ট করো
+        const novelData = `
+
+        কত কথা বাকি ছিলো,
+        বলা হয়নি আর।
+
+        গন্তব্য অনেক দুরের তাই,
+        চলা হয়নি আর।
+
+        রেশমি চুলের খোপা যদি,
+        আমায় মনে রাখে,
+
+        তোমার মনে একটু যদি,
+        আমার যায়গা থাকে।
+
+        নিঝুম রাতে বাইরে এসে,
+        তারাগুলো দেখো,
+
+        আমার কথা মনে হলে,
+        চোখ বন্ধ রেখো।
+
+        তখন তোমার মনে যদি 
+        আমার ছবি ভাসে,
+        
+        তোমার চোখের কোণে যদি
+        একটু জল আসে...
+        
+
+       
+
+
+
+        `;
+    </script>
+
+</body>
+</html>
